@@ -1,0 +1,10 @@
+.root{
+	-fx-background-image: url("battlefield.jpg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 500px 275px;
+}
+
+.label{
+	-fx-font-family: "Algerian";
+	-fx-font-size: 50;
+}

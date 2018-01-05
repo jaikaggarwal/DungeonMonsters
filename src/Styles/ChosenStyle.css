@@ -1,0 +1,21 @@
+.root{
+	-fx-background-color: #41B3A3;
+}
+
+.label{
+	-fx-font-size: 20;
+	-fx-font-family: "Arial";
+	-fx-text-fill: red;	
+}
+
+.text-field{
+	-fx-text-fill: #cccccc ;
+}
+
+.text-field-black{
+	-fx-text-fill: #000000 ;
+}
+
+.button{
+	-fx-background-radius: 4;
+}
