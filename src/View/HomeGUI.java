@@ -20,10 +20,15 @@ public class HomeGUI extends Pane {
 
 
         ImageView top = new ImageView(new Image("images/meadow_top.jpg", 500, 140, false, false));
-//        top.setFill(Color.INDIGO);
         ImageView bottom = new ImageView(new Image("images/meadow_bottom.jpg", 500, 143, false, false));
-//        bottom.setFill(Color.MEDIUMVIOLETRED);
-//        Rectangle check = new Rectangle(0, 275, 500, 1);
+        ImageView melee = new ImageView(new Image("images/melee.png", 900, 940, false, false));
+        ImageView meadows = new ImageView(new Image("images/meadows.png", 900, 940, false, false));
+
+        melee.setX(-600);
+        melee.setY(-350);
+
+        meadows.setX(300);
+        meadows.setY(-300);
 
         TranslateTransition tt1 = new TranslateTransition(Duration.seconds(1), top);
         tt1.setFromY(-100);
@@ -35,7 +40,18 @@ public class HomeGUI extends Pane {
         tt2.setToY(140);
         tt2.play();
 
-        this.getChildren().addAll(top, bottom);
+        TranslateTransition ttmelee = new TranslateTransition(Duration.seconds(3), melee);
+        ttmelee.setToX(300);
+        ttmelee.play();
+
+
+        TranslateTransition ttmeadows = new TranslateTransition(Duration.seconds(3), meadows);
+        ttmeadows.setToX(-500);
+        ttmeadows.play();
+
+
+
+        this.getChildren().addAll(top, bottom, melee, meadows);
 
     }
 }
