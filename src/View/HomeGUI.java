@@ -1,7 +1,10 @@
 package View;
 
+import Controller.HomeController;
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -11,13 +14,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-
 public class HomeGUI extends Pane {
-    Stage stage;
 
     public HomeGUI(Stage mainStage) {
-        stage = mainStage;
-
+        Stage stage = mainStage;
+        HomeController hc = new HomeController(stage);
 
         ImageView top = new ImageView(new Image("images/meadow_top.jpg", 500, 140, false, false));
         ImageView bottom = new ImageView(new Image("images/meadow_bottom.jpg", 500, 143, false, false));
@@ -50,8 +51,19 @@ public class HomeGUI extends Pane {
         ttmeadows.play();
 
 
+        Button next = new Button("Click to Start");
+        next.setTranslateY(200);
+        next.setTranslateX(200);
+        next.setOpacity(0);
+        next.setOnMouseClicked(e -> hc.next());
 
-        this.getChildren().addAll(top, bottom, melee, meadows);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(4), next);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.setDelay(Duration.seconds(3));
+        fadeTransition.play();
+
+        this.getChildren().addAll(top, bottom, melee, meadows, next);
 
     }
 }
