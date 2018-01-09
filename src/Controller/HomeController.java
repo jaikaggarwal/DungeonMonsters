@@ -17,7 +17,7 @@ public class HomeController {
     public void next() {
         Scene scene = new Scene(new MonsterChoiceGUI(stage), 500, 275);
         scene.getStylesheets().add("Styles/MonsterChoiceStyle.css");
-        clip.stop();    
+        clip.stop();
         stage.setScene(scene);
     }
 

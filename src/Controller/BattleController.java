@@ -46,14 +46,14 @@ public class BattleController {
 
     public void battler(){
         Battle.battle(first, second);
-        if (first.getHealth() <= 0){
-            battleGUI.getBack().setText("Looks like you lost!");
-            battleGUI.getBack().setOnAction(e -> gameOver());
-        } else {
-            battleGUI.getBack().setText("Congrats you won!");
-            battleGUI.getBack().setOnAction(e -> back());
-        }
-        battleGUI.add(battleGUI.getBack(), 1,2, 2,1);
+//        if (first.getHealth() <= 0){
+//            battleGUI.getBack().setText("Looks like you lost!");
+//            battleGUI.getBack().setOnAction(e -> gameOver());
+//        } else {
+//            battleGUI.getBack().setText("Congrats you won!");
+//            battleGUI.getBack().setOnAction(e -> back());
+//        }
+//        battleGUI.getChildren().add(battleGUI.getBack());
         }
 
     public void back(){
@@ -70,6 +70,22 @@ public class BattleController {
     public void gameOver(){
         Scene scene = new Scene(new MonsterChoiceGUI(stage), 500, 275);
         stage.setScene(scene);
+    }
+
+    public void arrowMoveLeft(){
+        if (battleGUI.getArrow().getX() == 160) {
+            battleGUI.getArrow().setX(0);
+        } else if (battleGUI.getArrow().getX() == 310) {
+            battleGUI.getArrow().setX(160);
+        }
+    }
+
+    public void arrowMoveRight(){
+        if (battleGUI.getArrow().getX() == 0) {
+            battleGUI.getArrow().setX(160);
+        } else if (battleGUI.getArrow().getX() == 160) {
+            battleGUI.getArrow().setX(310);
+        }
     }
 
 }

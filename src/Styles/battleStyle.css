@@ -1,10 +1,25 @@
 .root{
-	-fx-background-image: url("battlefield.jpg");
+	-fx-background-image: url("battlefield_2.jpg");
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: 500px 275px;
 }
 
 .label{
-	-fx-font-family: "Algerian";
-	-fx-font-size: 50;
+	-fx-font-family: "Century";
+	-fx-font-size: 15;
+	-fx-text-fill: white;
+}
+
+#menusbg{
+	-fx-fill: teal;
+}
+
+#menubg{
+	-fx-fill: #d2691e;
+	-fx-arc-height: 40;
+	-fx-arc-width: 40;	
+}
+
+#menu{
+	-fx-fill: teal;
 }
