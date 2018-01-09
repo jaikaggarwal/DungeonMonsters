@@ -76,7 +76,6 @@ public class BattleGUI extends Pane {
         arrow.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-
                 switch (event.getCode()) {
                     case RIGHT:
                         bc.arrowMoveRight();
@@ -85,6 +84,9 @@ public class BattleGUI extends Pane {
                     case LEFT:
                         bc.arrowMoveLeft();
                         break;
+
+                    case ENTER:
+                        bc.determineMove();
                 }
             }
         });
@@ -106,6 +108,14 @@ public class BattleGUI extends Pane {
 
     public ImageView getArrow() {
         return arrow;
+    }
+
+    public ImageView getFirstImage() {
+        return firstImage;
+    }
+
+    public ImageView getSecondImage() {
+        return secondImage;
     }
 }
 
