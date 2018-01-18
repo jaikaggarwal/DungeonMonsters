@@ -119,26 +119,30 @@ public abstract class RoomController{
         }
     }
 
-    public void moveLeft(){
+    public boolean moveLeft(){
         if (!(monster.getX() - 1 < 0)){
             monster.setX(monster.getX() - 1);
         }
+        return true;
     }
 
-    public void moveRight(){
+    public boolean moveRight(){
         if (monster.getX() < colNum - 1){
             monster.setX(monster.getX() + 1);
         }
+        return true;
     }
-    public void moveUp(){
+    public boolean moveUp(){
         if (!(monster.getY() - 1 < 0)){
             monster.setY(monster.getY() - 1);
         }
+        return true;
     }
-    public void moveDown(){
+    public boolean moveDown(){
         if (monster.getY() < rowNum - 1){
             monster.setY(monster.getY() + 1);
         }
+        return true;
     }
 
     public void updateLocation(){

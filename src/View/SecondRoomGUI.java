@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SecondRoomGUI extends RoomGUI {
+    static int i = 1;
     public SecondRoomGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
@@ -29,22 +30,17 @@ public class SecondRoomGUI extends RoomGUI {
                 switch (event.getCode()) {
                     case UP:
                         src.moveUp();
-                        System.out.println("Helo");
                         break;
                     case DOWN:
                         src.moveDown();
-                        System.out.println("pole");
                         break;
                     case RIGHT:
                         src.moveRight();
-                        System.out.println("weird");
                         break;
                     case LEFT:
                         src.moveLeft();
-                        System.out.println("Cap");
                         break;
                     default:
-                        System.out.println("How did you get here?");
                         break;
                 }
                 src.updateLocation();
@@ -53,6 +49,6 @@ public class SecondRoomGUI extends RoomGUI {
 
         monsterImage.setFocusTraversable(true);
 
-        stage.setTitle("Room 1");
+        stage.setTitle("Room 2");
     }
     }

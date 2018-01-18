@@ -5,9 +5,10 @@
 }
 
 .label{
-	-fx-font-family: "Century";
+	-fx-font-family: "Courier Regular";
 	-fx-font-size: 15;
-	-fx-text-fill: white;
+	-fx-text-fill: black;
+
 }
 
 #menusbg{
@@ -15,7 +16,7 @@
 }
 
 #menubg{
-	-fx-fill: #d2691e;
+	-fx-fill: #ccffcc;
 	-fx-arc-height: 40;
 	-fx-arc-width: 40;	
 }

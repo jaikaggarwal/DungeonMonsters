@@ -23,6 +23,8 @@ public class FirstRoomGUI extends RoomGUI {
         this.setHgap(0);
         this.setVgap(0);
 
+
+
         FirstRoomController frc = new FirstRoomController(stage, this, m);
         frc.populate();
         ImageView monsterImage = frc.getIv();
@@ -30,35 +32,32 @@ public class FirstRoomGUI extends RoomGUI {
         monsterImage.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event) {
-                                     switch (event.getCode()) {
-                                         case UP:
-                                             frc.moveUp();
-                                             System.out.println("Helo");
-                                             break;
-                                         case DOWN:
-                                             frc.moveDown();
-                                             System.out.println("pole");
-                                             break;
-                                         case RIGHT:
-                                             frc.moveRight();
-                                             System.out.println("weird");
-                                             break;
-                                         case LEFT:
-                                             frc.moveLeft();
-                                             System.out.println("Cap");
-                                             break;
-                                         default:
-                                             System.out.println("How did you get here?");
-                                             break;
-                                     }
-frc.updateLocation();
-                                 }
-                                 });
+                boolean update = false;
+                    switch (event.getCode()) {
+                        case UP:
+                            update = frc.moveUp();
+                            break;
+                        case DOWN:
+                            update = frc.moveDown();
+                            break;
+                        case RIGHT:
+                            update = frc.moveRight();
+                            break;
+                        case LEFT:
+                            update = frc.moveLeft();
+                            break;
+                        default:
+                            break;
+                    }
+                if (update) {
+                    frc.updateLocation();
+                }
+            }
+        });
 
         monsterImage.setFocusTraversable(true);
 
         stage.setTitle("Room 1");
-        }
-
     }
+}
 
