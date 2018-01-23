@@ -5,6 +5,7 @@ import View.RoomGUI;
 import View.SecondRoomGUI;
 import View.ThirdRoomGUI;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -24,7 +25,14 @@ public class ThirdRoomController extends RoomController{
         for (i = 0; i < rowNum; i++){
             ArrayList<String> cols = new ArrayList<>();
             for (j = 0; j < colNum; j++){
-                if ((j == 9 || j == 3 || i == 3 || i == 8)) {
+                if (j == 6 && i ==6){
+                    ImageView iv = new ImageView(new Image("images/dungeon_entry.png", WIDTH, HEIGHT, false, false));
+                    ImageView iv2 = new ImageView(grass);
+                    cols.add("DE");
+                    room.add(iv2, j, i);
+                    room.add(iv, j, i);
+                }
+                else if ((j == 9 || j == 3 || i == 3 || i == 9)) {
                     ImageView iv = new ImageView(path);
                     cols.add("path");
                     room.add(iv, j, i);
@@ -54,6 +62,16 @@ public class ThirdRoomController extends RoomController{
             monster.setY(monster.getY() - 1);
         }
         return true;
+    }
+    @Override
+    public void updateLocation(){
+        if (monster.getX() == 6 && monster.getY() == 6){
+            Scene scene = new Scene(new SecondRoomGUI(stage, monster), 500, 275);
+            stage.setScene(scene);
+        }
+        room.getChildren().remove(iv);
+        room.add(iv, monster.getX(), monster.getY());
+        battleSim();
     }
 }
 

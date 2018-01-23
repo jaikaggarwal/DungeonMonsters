@@ -18,17 +18,17 @@ public class    Starter extends Application {
     @Override
     public void start(Stage mainStage) throws Exception {
 
-//        Scene scene = new Scene(new HomeGUI(mainStage), 500, 275);
-//        mainStage.setScene(scene);
-//        mainStage.show();
-
-//        Scene scene = new Scene(new FirstRoomGUI(mainStage, new WaterMonster()));
-//        mainStage.setScene(scene);
-//        mainStage.show();
-
-        Scene scene = new Scene(new IntroGUI(mainStage), 500, 275);
-        scene.getStylesheets().add("Styles/introStyle.css");
+        Scene scene = new Scene(new HomeGUI(mainStage), 500, 275);
         mainStage.setScene(scene);
         mainStage.show();
+
+//        Scene scene = new Scene(new ThirdRoomGUI(mainStage, new WaterMonster()));
+//        mainStage.setScene(scene);
+//        mainStage.show();
+
+//        Scene scene = new Scene(new IntroGUI(mainStage), 500, 275);
+//        scene.getStylesheets().add("Styles/introStyle.css");
+//        mainStage.setScene(scene);
+//        mainStage.show();
     }
 }
