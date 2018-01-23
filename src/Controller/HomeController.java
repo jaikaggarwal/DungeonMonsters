@@ -1,5 +1,6 @@
 package Controller;
 
+import View.IntroGUI;
 import View.MonsterChoiceGUI;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
@@ -15,8 +16,8 @@ public class HomeController {
         stage = mainstage;
     }
     public void next() {
-        Scene scene = new Scene(new MonsterChoiceGUI(stage), 500, 275);
-        scene.getStylesheets().add("Styles/MonsterChoiceStyle.css");
+        Scene scene = new Scene(new IntroGUI(stage), 500, 275);
+        scene.getStylesheets().add("Styles/introStyle.css");
         clip.stop();
         stage.setScene(scene);
     }

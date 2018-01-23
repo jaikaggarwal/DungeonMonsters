@@ -22,7 +22,12 @@ public class    Starter extends Application {
 //        mainStage.setScene(scene);
 //        mainStage.show();
 
-        Scene scene = new Scene(new FirstRoomGUI(mainStage, new WaterMonster()));
+//        Scene scene = new Scene(new FirstRoomGUI(mainStage, new WaterMonster()));
+//        mainStage.setScene(scene);
+//        mainStage.show();
+
+        Scene scene = new Scene(new IntroGUI(mainStage), 500, 275);
+        scene.getStylesheets().add("Styles/introStyle.css");
         mainStage.setScene(scene);
         mainStage.show();
     }
