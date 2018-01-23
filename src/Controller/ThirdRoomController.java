@@ -4,6 +4,7 @@ import Model.Monster;
 import View.RoomGUI;
 import View.SecondRoomGUI;
 import View.ThirdRoomGUI;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -39,6 +40,20 @@ public class ThirdRoomController extends RoomController{
 //        monster.setHealth(monster.getHealth()*2);
 //        room.add(new ImageView(boss), 9, 0);
 //        rows.get(0).set(1, "boss");
+    }
+
+    @Override
+    public boolean moveUp(){
+        if ((monster.getX() == 9 || monster.getX() == 3) && monster.getY() == 0){
+            monster.setY(rowNum - 1);
+            Scene scene = new Scene(new SecondRoomGUI(stage, monster), 500, 275);
+            stage.setScene(scene);
+            return false;
+        }
+        else if (!(monster.getY() - 1 < 0)){
+            monster.setY(monster.getY() - 1);
+        }
+        return true;
     }
 }
 
