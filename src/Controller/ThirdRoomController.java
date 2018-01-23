@@ -23,7 +23,7 @@ public class ThirdRoomController extends RoomController{
         for (i = 0; i < rowNum; i++){
             ArrayList<String> cols = new ArrayList<>();
             for (j = 0; j < colNum; j++){
-                if ((j == 4 || j == 3 || i == 3 || i == 8)) {
+                if ((j == 9 || j == 3 || i == 3 || i == 8)) {
                     ImageView iv = new ImageView(path);
                     cols.add("path");
                     room.add(iv, j, i);
@@ -36,9 +36,9 @@ public class ThirdRoomController extends RoomController{
             rows.add(cols);
         }
         iv = placeMonster();
-        monster.setHealth(monster.getHealth()*2);
-        room.add(new ImageView(boss), 9, 0);
-        rows.get(0).set(9, "boss");
+//        monster.setHealth(monster.getHealth()*2);
+//        room.add(new ImageView(boss), 9, 0);
+//        rows.get(0).set(1, "boss");
     }
 }
 

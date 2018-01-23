@@ -27,23 +27,26 @@ public class SecondRoomGUI extends RoomGUI {
         monsterImage.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event) {
+                boolean update = false;
                 switch (event.getCode()) {
                     case UP:
-                        src.moveUp();
+                        update = src.moveUp();
                         break;
                     case DOWN:
-                        src.moveDown();
+                        update = src.moveDown();
                         break;
                     case RIGHT:
-                        src.moveRight();
+                        update = src.moveRight();
                         break;
                     case LEFT:
-                        src.moveLeft();
+                        update = src.moveLeft();
                         break;
                     default:
                         break;
                 }
-                src.updateLocation();
+                if (update) {
+                    src.updateLocation();
+                }
             }
         });
 

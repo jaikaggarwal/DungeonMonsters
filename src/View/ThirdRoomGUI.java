@@ -1,6 +1,5 @@
 package View;
 
-import Controller.SecondRoomController;
 import Controller.ThirdRoomController;
 import Model.Monster;
 import javafx.event.EventHandler;
@@ -47,7 +46,7 @@ public class ThirdRoomGUI extends RoomGUI {
 
         monsterImage.setFocusTraversable(true);
 
-        stage.setTitle("Room 2");
+        stage.setTitle("Room 3");
     }
 }
 
