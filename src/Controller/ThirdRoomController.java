@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Monster;
+import View.FirstDungeonGUI;
 import View.RoomGUI;
 import View.SecondRoomGUI;
 import View.ThirdRoomGUI;
@@ -66,7 +67,8 @@ public class ThirdRoomController extends RoomController{
     @Override
     public void updateLocation(){
         if (monster.getX() == 6 && monster.getY() == 6){
-            Scene scene = new Scene(new SecondRoomGUI(stage, monster), 500, 275);
+            monster.setY(rowNum - 1);
+            Scene scene = new Scene(new FirstDungeonGUI(stage, monster), 500, 275);
             stage.setScene(scene);
         }
         room.getChildren().remove(iv);

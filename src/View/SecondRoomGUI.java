@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SecondRoomGUI extends RoomGUI {
-    static int i = 1;
+
     public SecondRoomGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
@@ -54,4 +54,4 @@ public class SecondRoomGUI extends RoomGUI {
 
         stage.setTitle("Room 2");
     }
-    }
+}
