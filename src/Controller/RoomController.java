@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class RoomController{
     Stage stage;
@@ -21,9 +22,13 @@ public abstract class RoomController{
     int rowNum = 11;
     Image grass = new Image("images/grassSprite.jpg", WIDTH, HEIGHT, false, false);
     Image path = new Image("images/path.jpg", WIDTH, HEIGHT, false, false);
-    Image boss = new Image("images/boss.jpg", WIDTH, HEIGHT, false, false);
+    Image boss = new Image("images/boss.jpg", WIDTH*2, HEIGHT*2, false, false);
+    ImageView treasure = new ImageView(new Image("images/treasure.png", WIDTH, HEIGHT, false, false));
     ArrayList<ArrayList<String>> rows = new ArrayList<>();
-
+    Random rnd = new Random();
+    ArrayList password = new ArrayList<>();
+    static boolean treasure_opened_1 = false;
+    static boolean treasure_opened_2 = false;
 
     public abstract void populate();
 //        int i;
@@ -74,20 +79,22 @@ public abstract class RoomController{
         return check;
     }
 
-    public String battleType(){
-        String type;
-        switch (rows.get(monster.getY()).get(monster.getX())) {
-            case "grass":
-                type = "grass";
-                break;
-            case "boss":
-                type = "boss";
-                break;
-            default:
-                type = "none";
-        }
-        return type;
-    }
+//    public String battleType(){
+//        String type;
+////        switch (rows.get(monster.getY()).get(monster.getX())) {
+////            case "grass":
+////                type = "grass";
+////                break;
+////            case "boss":
+////                type = "boss";
+////                break;
+////            case "treasure":
+////                type = "treasure"
+////            default:
+////                type = "none";
+////        }
+//        return type;
+    //}
 
     public Monster enemyGenerator() {
         Monster enemy;
@@ -103,7 +110,7 @@ public abstract class RoomController{
     }
 
     public void battleSim(){
-        String battleType = battleType();
+        String battleType = rows.get(monster.getY()).get(monster.getX());
         if (battleType.equals("grass")) {
             if (Grass.checker()) {
                 Monster enemy = enemyGenerator();
@@ -116,6 +123,16 @@ public abstract class RoomController{
             Scene scene = new Scene (new BattleGUI(stage, monster, enemy, room), 500, 275);
             scene.getStylesheets().add("Styles/battleStyle.css");
             stage.setScene(scene);
+        } else if (battleType.equals("treasure")){
+            int pass_int = rnd.nextInt(10);
+            password.add(pass_int);
+            room.getChildren().remove(treasure);
+            if (room.getName() == "first") {
+                room.getController().treasure_opened_1 = true;
+            }
+            if (room.getName() == "second") {
+                room.getController().treasure_opened_2 = true;
+            }
         }
     }
 

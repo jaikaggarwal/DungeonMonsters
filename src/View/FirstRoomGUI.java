@@ -1,5 +1,6 @@
 package View;
 import Controller.FirstRoomController;
+import Controller.RoomController;
 import Model.Monster;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -16,16 +17,20 @@ import java.io.File;
 import java.io.IOException;
 
 public class FirstRoomGUI extends RoomGUI {
+    Stage mainStage;
+    Monster monster;
+    FirstRoomController frc;
+
+
     public FirstRoomGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
         this.setGridLinesVisible(true);
         this.setHgap(0);
         this.setVgap(0);
-
-
-
-        FirstRoomController frc = new FirstRoomController(stage, this, m);
+        mainStage = stage;
+        monster = m;
+        frc = new FirstRoomController(mainStage, this, monster);
         frc.populate();
         ImageView monsterImage = frc.getIv();
 
@@ -57,7 +62,15 @@ public class FirstRoomGUI extends RoomGUI {
 
         monsterImage.setFocusTraversable(true);
 
-        stage.setTitle("Room 1");
+        mainStage.setTitle("Room 1");
+    }
+
+    @Override
+    public RoomController getController() {
+        return frc;
+    }
+    public String getName(){
+        return "first";
     }
 }
 

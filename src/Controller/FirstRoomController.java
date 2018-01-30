@@ -40,8 +40,10 @@ public class FirstRoomController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
-        room.add(new ImageView(boss), 9, 0);
-        rows.get(0).set(9, "boss");
+        if (!treasure_opened_1) {
+            room.add(treasure, 0, 0);
+            rows.get(0).set(0, "treasure");
+        }
     }
 
     @Override
@@ -57,4 +59,5 @@ public class FirstRoomController extends RoomController {
         }
         return false;
     }
+
 }

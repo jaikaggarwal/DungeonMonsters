@@ -1,6 +1,7 @@
 package View;
 
 import Controller.FirstRoomController;
+import Controller.RoomController;
 import Controller.SecondRoomController;
 import Model.Monster;
 import javafx.event.EventHandler;
@@ -12,7 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SecondRoomGUI extends RoomGUI {
-
+    Stage mainStage;
+    Monster monster;
+    SecondRoomController src;
     public SecondRoomGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
@@ -20,7 +23,9 @@ public class SecondRoomGUI extends RoomGUI {
         this.setHgap(0);
         this.setVgap(0);
 
-        SecondRoomController src = new SecondRoomController(stage, this, m);
+        mainStage = stage;
+        monster = m;
+        src = new SecondRoomController(mainStage, this, monster);
         src.populate();
         ImageView monsterImage = src.getIv();
 
@@ -52,6 +57,13 @@ public class SecondRoomGUI extends RoomGUI {
 
         monsterImage.setFocusTraversable(true);
 
-        stage.setTitle("Room 2");
+        mainStage.setTitle("Room 2");
+    }
+    @Override
+    public RoomController getController() {
+        return src;
+    }
+    public String getName(){
+        return "second";
     }
 }

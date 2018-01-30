@@ -1,5 +1,6 @@
 package View;
 
+import Controller.RoomController;
 import Controller.ThirdRoomController;
 import Model.Monster;
 import javafx.event.EventHandler;
@@ -10,14 +11,20 @@ import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 public class ThirdRoomGUI extends RoomGUI {
+    Stage mainStage;
+    Monster monster;
+    ThirdRoomController trc;
     public ThirdRoomGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
         this.setGridLinesVisible(true);
         this.setHgap(0);
         this.setVgap(0);
+        mainStage = stage;
+        monster = m;
+        trc = new ThirdRoomController(mainStage, this, monster);
 
-        ThirdRoomController trc = new ThirdRoomController(stage, this, m);
+
         trc.populate();
         ImageView monsterImage = trc.getIv();
 
@@ -49,7 +56,13 @@ public class ThirdRoomGUI extends RoomGUI {
 
         monsterImage.setFocusTraversable(true);
 
-        stage.setTitle("Room 3");
+        mainStage.setTitle("Room 3");
+    }
+    public RoomController getController() {
+        return trc;
+    }
+    public String getName(){
+        return "third";
     }
 }
 

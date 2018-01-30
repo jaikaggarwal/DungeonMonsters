@@ -38,9 +38,11 @@ public class SecondRoomController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
-//        monster.setHealth(monster.getHealth()*2);
-        room.add(new ImageView(boss), 9, 0);
-        rows.get(0).set(9, "boss");
+        if (!treasure_opened_2) {
+            room.add(treasure, 9, 0);
+            rows.get(0).set(9, "treasure");
+        }
+
     }
 
     @Override

@@ -3,8 +3,6 @@ package Controller;
 import Model.Monster;
 import View.DungeonBossGUI;
 import View.FirstDungeonGUI;
-import View.FirstRoomGUI;
-import View.SecondRoomGUI;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,11 +10,11 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class FirstDungeonController extends RoomController {
+public class DungeonBossController extends RoomController {
 
     Image wall = new Image("images/dungeon_wall.png", WIDTH, HEIGHT, false, false);
     Image d_path = new Image("images/dungeon_path.png", WIDTH, HEIGHT, false, false);
-    public FirstDungeonController(Stage s, FirstDungeonGUI r, Monster m) {
+    public DungeonBossController(Stage s, DungeonBossGUI r, Monster m) {
         stage = s;
         room = r;
         monster = m;
@@ -42,7 +40,11 @@ public class FirstDungeonController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
-
+        room.add(new ImageView(boss), 4, 4, 2, 3);
+        rows.get(4).set(4, "boss");
+        rows.get(4).set(5, "boss");
+        rows.get(5).set(4, "boss");
+        rows.get(5).set(5, "boss");
     }
     @Override
     public boolean moveLeft(){
@@ -58,18 +60,5 @@ public class FirstDungeonController extends RoomController {
         }
         return true;
     }
-    @Override
-    public boolean moveUp(){
-        if (!(monster.getY() - 1 < 0)){
-            monster.setY(monster.getY() - 1);
-        } else {
-            monster.setY(colNum);
-            Scene scene = new Scene(new DungeonBossGUI(stage, monster), 500, 275);
-            stage.setScene(scene);
-            stage.show();
-        }
-        return true;
-    }
 }
-
 
