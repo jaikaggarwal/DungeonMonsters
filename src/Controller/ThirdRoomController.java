@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.Monster;
-import View.FirstDungeonGUI;
-import View.RoomGUI;
-import View.SecondRoomGUI;
-import View.ThirdRoomGUI;
+import View.*;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,7 +30,7 @@ public class ThirdRoomController extends RoomController{
                     room.add(iv2, j, i);
                     room.add(iv, j, i);
                 }
-                else if ((j == 9 || j == 3 || i == 3 || i == 9)) {
+                else if ((j == 9 | j == 3 && i < colNum - 1) || (i == 3 | i == 9 && j > 2)) {
                     ImageView iv = new ImageView(path);
                     cols.add("path");
                     room.add(iv, j, i);
@@ -68,7 +65,7 @@ public class ThirdRoomController extends RoomController{
     public void updateLocation(){
         if (monster.getX() == 6 && monster.getY() == 6){
             monster.setY(rowNum - 1);
-            Scene scene = new Scene(new FirstDungeonGUI(stage, monster), 500, 275);
+            Scene scene = new Scene(new ThirdDungeonGUI(stage, monster), 500, 275);
             stage.setScene(scene);
         }
         room.getChildren().remove(iv);

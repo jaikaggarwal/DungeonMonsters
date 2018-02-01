@@ -2,7 +2,7 @@ package View;
 
 import Controller.FirstDungeonController;
 import Controller.RoomController;
-import Controller.SecondRoomController;
+import Controller.SecondDungeonController;
 import Model.Monster;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -11,11 +11,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
-public class FirstDungeonGUI extends RoomGUI{
+public class SecondDungeonGUI extends RoomGUI {
     Stage mainStage;
     Monster monster;
-    FirstDungeonController fdc;
-    public FirstDungeonGUI(Stage stage, Monster m) {
+    SecondDungeonController sdc;
+    public SecondDungeonGUI(Stage stage, Monster m) {
         this.setAlignment(Pos.CENTER);
         this.setBackground(Background.EMPTY);
         this.setGridLinesVisible(true);
@@ -23,9 +23,9 @@ public class FirstDungeonGUI extends RoomGUI{
         this.setVgap(0);
         mainStage = stage;
         monster = m;
-        fdc = new FirstDungeonController(mainStage, this, monster);
-        fdc.populate();
-        ImageView monsterImage = fdc.getIv();
+        sdc = new SecondDungeonController(mainStage, this, monster);
+        sdc.populate();
+        ImageView monsterImage = sdc.getIv();
 
         monsterImage.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
@@ -33,37 +33,36 @@ public class FirstDungeonGUI extends RoomGUI{
                 boolean update = false;
                 switch (event.getCode()) {
                     case UP:
-                        update = fdc.moveUp();
+                        update = sdc.moveUp();
                         break;
                     case DOWN:
-                        update = fdc.moveDown();
+                        update = sdc.moveDown();
                         break;
                     case RIGHT:
-                        update = fdc.moveRight();
+                        update = sdc.moveRight();
                         break;
                     case LEFT:
-                        update = fdc.moveLeft();
+                        update = sdc.moveLeft();
                         break;
                     default:
                         break;
                 }
                 if (update) {
-                    fdc.updateLocation();
+                    sdc.updateLocation();
                 }
             }
         });
 
         monsterImage.setFocusTraversable(true);
 
-        mainStage.setTitle("First Dungeon");
+        mainStage.setTitle("Second Dungeon");
     }
     @Override
     public RoomController getController() {
-        return fdc;
+        return sdc;
     }
     public String getName(){
-        return "dun1";
+        return "dun2";
     }
 }
-
 
