@@ -41,6 +41,13 @@ public class SecondDungeonController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
+        if (!treasure_opened_2) {
+            room.add(treasure, 4, 0, 2, 2);
+            rows.get(0).set(5, "treasure");
+            rows.get(0).set(4, "treasure");
+            rows.get(1).set(4, "treasure");
+            rows.get(1).set(5, "treasure");
+        }
 
     }
 

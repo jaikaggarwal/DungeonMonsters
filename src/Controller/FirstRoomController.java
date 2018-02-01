@@ -46,10 +46,7 @@ public class FirstRoomController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
-        if (!treasure_opened_1) {
-            room.add(treasure, 0, 0);
-            rows.get(0).set(0, "treasure");
-        }
+
     }
 
     @Override

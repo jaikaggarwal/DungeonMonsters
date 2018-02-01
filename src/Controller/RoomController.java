@@ -23,7 +23,7 @@ public abstract class RoomController{
     Image grass = new Image("images/grassSprite.jpg", WIDTH, HEIGHT, false, false);
     Image path = new Image("images/path.jpg", WIDTH, HEIGHT, false, false);
     Image boss = new Image("images/boss.jpg", WIDTH*2, HEIGHT*2, false, false);
-    ImageView treasure = new ImageView(new Image("images/treasure.png", WIDTH, HEIGHT, false, false));
+    ImageView treasure = new ImageView(new Image("images/treasure.png", WIDTH*2, HEIGHT*2, false, false));
     ArrayList<ArrayList<String>> rows = new ArrayList<>();
     Random rnd = new Random();
     ArrayList password = new ArrayList<>();
@@ -31,29 +31,7 @@ public abstract class RoomController{
     static boolean treasure_opened_2 = false;
 
     public abstract void populate();
-//        int i;
-//        int j;
-//
-//        for (i = 0; i < rowNum; i++){
-//            ArrayList<String> cols = new ArrayList<>();
-//            for (j = 0; j < colNum; j++){
-//                if ((j == 3 || j == 6 || i == 3 || i == 8) && (j > 2 && i > 2)) {
-//                    ImageView iv = new ImageView(path);
-//                    cols.add("path");
-//                    room.add(iv, j, i);
-//                } else {
-//                    ImageView iv = new ImageView(grass);
-//                    cols.add("grass");
-//                    room.add(iv, j, i);
-//                }
-//            }
-//            rows.add(cols);
-//        }
-//        iv = placeMonster();
-//        monster.setHealth(monster.getHealth()*2);
-//        room.add(new ImageView(boss), 9, 0);
-//        rows.get(0).set(9, "boss");
-//    }
+
 
     public ImageView placeMonster(){
         ImageView monImage = new ImageView();
@@ -78,23 +56,6 @@ public abstract class RoomController{
         }
         return check;
     }
-
-//    public String battleType(){
-//        String type;
-////        switch (rows.get(monster.getY()).get(monster.getX())) {
-////            case "grass":
-////                type = "grass";
-////                break;
-////            case "boss":
-////                type = "boss";
-////                break;
-////            case "treasure":
-////                type = "treasure"
-////            default:
-////                type = "none";
-////        }
-//        return type;
-    //}
 
     public Monster enemyGenerator() {
         Monster enemy;

@@ -43,10 +43,7 @@ public class SecondRoomController extends RoomController {
             rows.add(cols);
         }
         iv = placeMonster();
-        if (!treasure_opened_2) {
-            room.add(treasure, 9, 0);
-            rows.get(0).set(9, "treasure");
-        }
+
 
     }
 
