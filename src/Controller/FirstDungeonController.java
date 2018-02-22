@@ -16,6 +16,7 @@ public class FirstDungeonController extends RoomController {
 
     Image wall = new Image("images/dungeon_wall.png", WIDTH, HEIGHT, false, false);
     Image d_path = new Image("images/dungeon_path.png", WIDTH, HEIGHT, false, false);
+    Image d_stairs = new Image("images/dungeon_stairs.png", WIDTH, HEIGHT, false, false);
     public FirstDungeonController(Stage s, FirstDungeonGUI r, Monster m) {
         stage = s;
         room = r;
@@ -43,12 +44,14 @@ public class FirstDungeonController extends RoomController {
         }
         iv = placeMonster();
         if (!treasure_opened_1) {
-            room.add(treasure, 5, 0);
+            room.add(treasure, 4, 0, 2, 2);
             rows.get(0).set(5, "treasure");
             rows.get(1).set(5, "treasure");
             rows.get(0).set(4, "treasure");
             rows.get(1).set(5, "treasure");
         }
+        ImageView imageView = new ImageView(d_stairs);
+        room.add(imageView, 3, rowNum - 1);
 
     }
     @Override
@@ -76,6 +79,19 @@ public class FirstDungeonController extends RoomController {
             stage.show();
         }
         return true;
+    }
+
+    @Override
+    public void updateLocation(){
+        if (monster.getX() == 3 && monster.getY() == rowNum - 1){
+            monster.setY(0);
+            monster.setX(1);
+            Scene scene = new Scene(new FirstRoomGUI(stage, monster), 500, 275);
+            stage.setScene(scene);
+        }
+        room.getChildren().remove(iv);
+        room.add(iv, monster.getX(), monster.getY());
+        battleSim();
     }
 }
 

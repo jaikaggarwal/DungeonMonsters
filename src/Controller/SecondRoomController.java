@@ -78,7 +78,7 @@ public class SecondRoomController extends RoomController {
     public void updateLocation() {
         if (monster.getX() == 9 && monster.getY() == 0) {
             monster.setY(rowNum - 1);
-            monster.setX(5);
+            monster.setX(4);
             Scene scene = new Scene(new SecondDungeonGUI(stage, monster), 500, 275);
             stage.setScene(scene);
         }

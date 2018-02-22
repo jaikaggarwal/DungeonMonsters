@@ -1,9 +1,7 @@
 package Controller;
 
 import Model.Monster;
-import View.DungeonBossGUI;
-import View.FirstDungeonGUI;
-import View.SecondDungeonGUI;
+import View.*;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +12,7 @@ import java.util.ArrayList;
 public class SecondDungeonController extends RoomController {
     Image wall = new Image("images/dungeon_wall.png", WIDTH, HEIGHT, false, false);
     Image d_path = new Image("images/dungeon_path.png", WIDTH, HEIGHT, false, false);
+    Image d_stairs = new Image("images/dungeon_stairs.png", WIDTH, HEIGHT, false, false);
 
     public SecondDungeonController(Stage s, SecondDungeonGUI r, Monster m) {
         stage = s;
@@ -48,6 +47,8 @@ public class SecondDungeonController extends RoomController {
             rows.get(1).set(4, "treasure");
             rows.get(1).set(5, "treasure");
         }
+        ImageView imageView = new ImageView(d_stairs);
+        room.add(imageView, 3, rowNum - 1);
 
     }
 
@@ -65,6 +66,19 @@ public class SecondDungeonController extends RoomController {
             monster.setX(monster.getX() + 1);
         }
         return true;
+    }
+
+    @Override
+    public void updateLocation(){
+        if (monster.getX() == 3 && monster.getY() == rowNum - 1){
+            monster.setY(0);
+            monster.setX(8);
+            Scene scene = new Scene(new SecondRoomGUI(stage, monster), 500, 275);
+            stage.setScene(scene);
+        }
+        room.getChildren().remove(iv);
+        room.add(iv, monster.getX(), monster.getY());
+        battleSim();
     }
 }
 

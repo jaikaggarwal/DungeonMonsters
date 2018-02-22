@@ -65,6 +65,7 @@ public class ThirdRoomController extends RoomController{
     public void updateLocation(){
         if (monster.getX() == 6 && monster.getY() == 6){
             monster.setY(rowNum - 1);
+            monster.setX(4);
             Scene scene = new Scene(new ThirdDungeonGUI(stage, monster), 500, 275);
             stage.setScene(scene);
         }
