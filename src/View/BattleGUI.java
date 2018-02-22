@@ -36,6 +36,12 @@ public class BattleGUI extends Pane {
     int ARROW_X = 310;
     int ARROW_Y = 180;
     ImageView arrow;
+    Rectangle menusbg;
+    Rectangle menubg;
+    Label attack;
+    Label defend;
+    Label run;
+
 
     public BattleGUI(Stage s, Monster firstMon, Monster secondMon, RoomGUI roomGUI) {
 
@@ -52,20 +58,20 @@ public class BattleGUI extends Pane {
         secondImage.setX(340);
         secondImage.setY(90);
 
-        Rectangle menusbg = new Rectangle(0, 190, 500, 85);
+        menusbg = new Rectangle(0, 190, 500, 85);
         menusbg.setId("menusbg");
-        Rectangle menubg = new Rectangle(10, 200, 480, 65);
+        menubg = new Rectangle(10, 200, 480, 65);
         menubg.setId("menubg");
 
         this.roomGUI = roomGUI;
 
-        Label attack = new Label("ATTACK");
+        attack = new Label("ATTACK");
         attack.setTranslateY(OPTION_Y);
         attack.setTranslateX(ATTACK_X);
-        Label defend = new Label("DEFEND");
+        defend = new Label("DEFEND");
         defend.setTranslateY(OPTION_Y);
         defend.setTranslateX(DEFEND_X);
-        Label run = new Label("RUN");
+        run = new Label("RUN");
         run.setTranslateY(OPTION_Y);
         run.setTranslateX(RUN_X);
 
@@ -86,6 +92,7 @@ public class BattleGUI extends Pane {
                         break;
 
                     case ENTER:
+                        //bc.battleStatus();
                         bc.determineMove();
                 }
             }
@@ -97,8 +104,8 @@ public class BattleGUI extends Pane {
 
 
 
-
-        bc.battler();
+//
+//        bc.startBattle();
 
     }
 
@@ -116,6 +123,25 @@ public class BattleGUI extends Pane {
 
     public ImageView getSecondImage() {
         return secondImage;
+    }
+
+    public Rectangle getMenusbg(){
+        return this.menusbg;
+    }
+    public Rectangle getMenubg(){
+        return this.menubg;
+    }
+
+    public Label getAttack() {
+        return attack;
+    }
+
+    public Label getDefend(){
+        return defend;
+    }
+
+    public Label getRun() {
+        return run;
     }
 }
 

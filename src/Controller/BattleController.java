@@ -9,10 +9,14 @@ import View.RoomGUI;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 
 public class BattleController {
@@ -22,6 +26,12 @@ public class BattleController {
     BattleGUI battleGUI;
     RoomGUI roomGUI;
     int SHIELD_SIZE = 400;
+    Rectangle menusbg;
+    Rectangle menubg;
+    Label attack;
+    Label defend;
+    Label run;
+
 
     public BattleController(Stage s, Monster monster, Monster enemy, BattleGUI bgui, RoomGUI rgui){
         first = monster;
@@ -29,6 +39,11 @@ public class BattleController {
         stage = s;
         battleGUI = bgui;
         roomGUI = rgui;
+        menubg = bgui.getMenubg();
+        menusbg = bgui.getMenusbg();
+        attack = bgui.getAttack();
+        defend = bgui.getDefend();
+        run = bgui.getRun();
     }
 
     public ImageView findImage(Monster mon){
@@ -49,14 +64,12 @@ public class BattleController {
         return monImage;
     }
 
-    public void battler(){
-        battleGUI.getArrow().setX(0);
-        Battle.battle(first, second);
+    public void startBattle(){
+//        battleGUI.getArrow().setX(0);
+////        Battle.battle(first, second);
 //        if (first.getHealth() <= 0){
-//            battleGUI.getBack().setText("Looks like you lost!");
 //            battleGUI.getBack().setOnAction(e -> gameOver());
 //        } else {
-//            battleGUI.getBack().setText("Congrats you won!");
 //            battleGUI.getBack().setOnAction(e -> back());
 //        }
 //        battleGUI.getChildren().add(battleGUI.getBack());
@@ -101,6 +114,9 @@ public class BattleController {
         monMove.setAutoReverse(true);
         monMove.setCycleCount(2);
         monMove.play();
+//        first.attack(second);
+//        System.out.println(second.getHealth());
+//        battleGUI.getChildren().removeAll(menusbg, menubg, attack, defend, run, arrow);
     }
 
     public void defend(){
@@ -143,6 +159,13 @@ public class BattleController {
                 break;
             case 310:
                 back();
+        }
+    }
+
+    public void battleStatus(){
+        determineMove();
+        if (second.getHealth() <= 0){
+            back();
         }
     }
 

@@ -34,7 +34,7 @@ public abstract class Monster {
 
     private int expWorth = 12;
 
-    void attack(Monster opponent) {
+    public void attack(Monster opponent) {
         int damage = (int) (Math.random() * (damageRange)) + damageBase;
         opponent.takeDamage(damage);
         System.out.println(opponent.getName() + " took " + damage + " damage!");
